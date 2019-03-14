@@ -63,6 +63,7 @@ namespace logger_project
         
         static void Main(string[] args)
         {
+            console.writeline("hello");
 
             
 
