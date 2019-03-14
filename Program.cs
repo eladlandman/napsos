@@ -32,6 +32,7 @@ namespace logger_project
         {
             counter++;
             return num * 2;
+
         }
 
 
@@ -47,7 +48,7 @@ namespace logger_project
                 }
             }
             return true;
-
+            
         }
 
         public int GetCounterValue()
@@ -63,7 +64,9 @@ namespace logger_project
         
         static void Main(string[] args)
         {
-            console.writeline("hello");
+
+            Console.WriteLine("hello world");
+            Console.WriteLine("hey one two three");
 
             
 
