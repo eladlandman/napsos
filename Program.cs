@@ -1,56 +1,75 @@
-﻿using System.Text;
-using System.IO;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System;
+using System.Text;
 using System.Threading.Tasks;
-using System.Threading;
 
-
-namespace ConsoleApp9
+namespace logger_project
 {
-    partial class Program
+    public class calculator
     {
+        public static int counter;
+        public calculator() { counter = 0; }
+        public bool MoreThanSeventy(int num)
+        {
+            return (num >= 70);
+        }
+
+        public int Bigger(int a, int b)
+        {
+            counter++;
+            if (a >= b)
+            {
+                return a;
+            }
+            else
+            {
+                return b;
+            }
+        }
+
+        public int Multiply(int num)
+        {
+            counter++;
+            return num * 2;
+        }
+
+
+
+        public bool Prime(int a)
+        {
+            counter++;
+            for (int i = 2; i < a; i++)
+            {
+                if (a % i == 0)
+                {
+                    return false;
+                }
+            }
+            return true;
+
+        }
+
+        public int GetCounterValue()
+        {
+            counter++;
+            return counter;
+        }
+
+
+    }
+    class Program
+    {
+        
         static void Main(string[] args)
         {
 
-
-            string folder = args.Length == 0 ? Environment.CurrentDirectory : args[0];
-
-            FolderManage dict = new FolderManage(Directory.GetCurrentDirectory());
-            dict.NotifyFileProcessInfoEvent += Dict_threadInfo;
-            long size1 = dict.GetSizeByThreads();
-            long size2 = dict.GetSizeByThreads();
-            long size3 = dict.GetSizeByThreads();
-            long size4 = dict.GetSizeByThreads();
-            Console.WriteLine($"Our final  results are :{size1},{size2},{size3},{size4}");
-      
-        
-
-
             
-            RaiseEvents rs = new RaiseEvents(1000);
-            rs.Tick += Rs_Tick;
-            rs.StartingByThread();
-            Thread.Sleep(3000);
-            rs.Stop();
+
             
 
 
-            Console.ReadLine();
-
-
-        }
-        private static void Dict_threadInfo(object sender, FileProcessInfoArgs e)
-        { 
-                Console.WriteLine($"Thread {e.ThreadNum} read file {e.FilePath}.Size={e.SizeOfFile}");
             
-            
-        }
-
-        private static void Rs_Tick(object sender, EventArgs e)
-        {
-            Console.WriteLine("hello elad");
         }
     }
 }
